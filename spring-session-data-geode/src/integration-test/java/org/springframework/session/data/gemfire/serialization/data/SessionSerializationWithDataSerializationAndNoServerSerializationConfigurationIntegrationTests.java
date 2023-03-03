@@ -185,6 +185,8 @@ public class SessionSerializationWithDataSerializationAndNoServerSerializationCo
 	@RequiredArgsConstructor(staticName = "newUser")
 	static class User implements Serializable {
 
+		private static final long serialVersionUID = 1;
+
 		private Integer id;
 
 		@lombok.NonNull
