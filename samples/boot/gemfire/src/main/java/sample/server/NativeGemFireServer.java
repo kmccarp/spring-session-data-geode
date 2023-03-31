@@ -72,7 +72,7 @@ public final class NativeGemFireServer implements Runnable {
 	}
 
 	private static String[] nullSafeStringArray(String[] array) {
-		return (array != null ? array.clone() : new String[0]);
+		return array != null ? array.clone() : new String[0];
 	}
 
 	private static void writeStringTo(File file, String fileContents) {
@@ -180,11 +180,9 @@ public final class NativeGemFireServer implements Runnable {
 
 	private Cache registerShutdownHook(final Cache gemfireCache) {
 
-		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-			public void run() {
-				if (gemfireCache != null) {
-					gemfireCache.close();
-				}
+		Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+			if (gemfireCache != null) {
+				gemfireCache.close();
 			}
 		}));
 

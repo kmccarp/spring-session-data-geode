@@ -26,6 +26,7 @@ import java.net.URL;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -214,7 +215,7 @@ public abstract class AbstractGemFireIntegrationTests extends ForkingClientServe
 
 		return Optional.ofNullable(classpath)
 			.filter(StringUtils::hasText)
-			.filter(it -> type != null)
+			.filter(Objects::nonNull)
 			.flatMap(it -> findClassInFileSystem(type))
 			.map(url -> {
 				try {
