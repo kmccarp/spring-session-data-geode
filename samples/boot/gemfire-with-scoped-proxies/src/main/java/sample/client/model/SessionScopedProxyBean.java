@@ -35,6 +35,8 @@ import org.springframework.web.context.annotation.SessionScope;
 @SessionScope(proxyMode = ScopedProxyMode.TARGET_CLASS) // <2>
 public class SessionScopedProxyBean implements Serializable {
 
+	private static final long serialVersionUID = 1;
+
 	private static final AtomicInteger INSTANCE_COUNTER = new AtomicInteger(0);
 
 	private final int count;

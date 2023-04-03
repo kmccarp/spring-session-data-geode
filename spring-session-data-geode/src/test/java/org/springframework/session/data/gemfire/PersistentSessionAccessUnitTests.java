@@ -107,6 +107,8 @@ public class PersistentSessionAccessUnitTests extends IntegrationTestsSupport {
 	@RequiredArgsConstructor(staticName = "newUser")
 	static class User implements Serializable {
 
+		private static final long serialVersionUID = 1;
+
 		private Long id;
 
 		@NonNull
