@@ -783,7 +783,7 @@ public class GemFireHttpSessionConfiguration extends AbstractGemFireHttpSessionC
 	}
 
 	private boolean isCauseBecauseNoSpringSessionGemFireConfigurerPresent(Exception cause) {
-		return (!(cause instanceof NoUniqueBeanDefinitionException) && cause instanceof NoSuchBeanDefinitionException);
+		return !(cause instanceof NoUniqueBeanDefinitionException) && cause instanceof NoSuchBeanDefinitionException;
 	}
 
 	private <T> SpringSessionGemFireConfigurer applySpringSessionGemFireConfigurerConfiguration(

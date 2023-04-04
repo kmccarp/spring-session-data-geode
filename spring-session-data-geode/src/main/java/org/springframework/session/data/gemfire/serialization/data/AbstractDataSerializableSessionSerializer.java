@@ -22,6 +22,7 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.Optional;
 
 import org.apache.geode.DataSerializer;
@@ -116,7 +117,7 @@ public abstract class AbstractDataSerializableSessionSerializer<T> extends DataS
 	public boolean canSerialize(Class<?> type) {
 
 		return Arrays.stream(nullSafeArray(getSupportedClasses(), Class.class))
-			.filter(it -> type != null)
+			.filter(Objects::nonNull)
 			.anyMatch(supportedClass -> supportedClass.isAssignableFrom(type));
 	}
 

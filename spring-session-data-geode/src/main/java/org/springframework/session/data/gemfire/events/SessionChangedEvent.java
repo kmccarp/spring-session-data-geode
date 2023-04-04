@@ -28,6 +28,8 @@ import org.springframework.session.Session;
  */
 public class SessionChangedEvent extends ApplicationEvent {
 
+	private static final long serialVersionUID = 1;
+
 	private final Session session;
 
 	/**

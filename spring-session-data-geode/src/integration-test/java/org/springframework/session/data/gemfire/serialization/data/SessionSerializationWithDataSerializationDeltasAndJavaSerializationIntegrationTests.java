@@ -161,6 +161,8 @@ public class SessionSerializationWithDataSerializationDeltasAndJavaSerialization
 	@RequiredArgsConstructor(staticName = "newCustomer")
 	static class Customer implements Serializable {
 
+		private static final long serialVersionUID = 1;
+
 		@NonNull
 		private String name;
 
