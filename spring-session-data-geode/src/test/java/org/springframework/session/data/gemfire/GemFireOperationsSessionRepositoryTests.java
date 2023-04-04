@@ -637,6 +637,6 @@ public class GemFireOperationsSessionRepositoryTests {
 			.publishEvent(isA(SessionDeletedEvent.class));
 	}
 
-	protected static abstract class GemfireOperationsAccessor extends GemfireAccessor implements GemfireOperations { }
+	protected abstract static class GemfireOperationsAccessor extends GemfireAccessor implements GemfireOperations { }
 
 }
