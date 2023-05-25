@@ -140,7 +140,7 @@ public class Application {
 	}
 
 	Integer nullSafeIncrement(Integer value) {
-		return (nullSafeIntValue(value) + 1);
+		return nullSafeIntValue(value) + 1;
 	}
 
 	int nullSafeIntValue(Number value) {
