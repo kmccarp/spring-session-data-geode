@@ -43,7 +43,7 @@ import org.apache.geode.pdx.PdxWriter;
  * @since 2.0.0
  */
 @SuppressWarnings("unused")
-public class ComposablePdxSerializer implements PdxSerializer, Iterable<PdxSerializer> {
+public final class ComposablePdxSerializer implements PdxSerializer, Iterable<PdxSerializer> {
 
 	private final List<PdxSerializer> pdxSerializers;
 
@@ -57,9 +57,9 @@ public class ComposablePdxSerializer implements PdxSerializer, Iterable<PdxSeria
 			stream(nullSafeIterable(pdxSerializers).spliterator(), false)
 				.filter(Objects::nonNull).collect(Collectors.toList());
 
-		return (pdxSerializerList.isEmpty() ? null
+		return pdxSerializerList.isEmpty() ? null
 			: (pdxSerializerList.size() == 1 ? pdxSerializerList.get(0)
-			: new ComposablePdxSerializer(pdxSerializerList)));
+			: new ComposablePdxSerializer(pdxSerializerList));
 	}
 
 	private ComposablePdxSerializer(List<PdxSerializer> pdxSerializers) {

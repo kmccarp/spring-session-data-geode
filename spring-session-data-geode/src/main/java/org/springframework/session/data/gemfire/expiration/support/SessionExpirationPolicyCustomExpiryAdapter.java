@@ -198,11 +198,10 @@ public class SessionExpirationPolicyCustomExpiryAdapter implements CustomExpiry<
 	 */
 	private ExpirationAction toGemFireExpirationAction(SessionExpirationPolicy.ExpirationAction expirationAction) {
 
-		switch (SessionExpirationPolicy.ExpirationAction.defaultIfNull(expirationAction)) {
-			case DESTROY:
-				return ExpirationAction.DESTROY;
-			default:
-				return ExpirationAction.INVALIDATE;
+		if (SessionExpirationPolicy.ExpirationAction.defaultIfNull(expirationAction) == SessionExpirationPolicy.ExpirationAction.DESTROY) {
+			return ExpirationAction.DESTROY;
+		} else {
+			return ExpirationAction.INVALIDATE;
 		}
 	}
 }
