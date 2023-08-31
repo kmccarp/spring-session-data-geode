@@ -817,11 +817,11 @@ public abstract class AbstractGemFireOperationsSessionRepository
 
 		private transient IsDirtyPredicate dirtyPredicate = DEFAULT_IS_DIRTY_PREDICATE;
 
-		private transient final SpelExpressionParser parser = new SpelExpressionParser();
+		private final transient SpelExpressionParser parser = new SpelExpressionParser();
 
 		private String id;
 
-		private transient final T sessionAttributes = newSessionAttributes(this);
+		private final transient T sessionAttributes = newSessionAttributes(this);
 
 		/**
 		 * Constructs a new, default instance of {@link GemFireSession} initialized with
@@ -1144,7 +1144,7 @@ public abstract class AbstractGemFireOperationsSessionRepository
 
 	public static class DeltaCapableGemFireSessionAttributes extends GemFireSessionAttributes implements Delta {
 
-		private transient final Set<String> sessionAttributeDeltas = new HashSet<>();
+		private final transient Set<String> sessionAttributeDeltas = new HashSet<>();
 
 		public DeltaCapableGemFireSessionAttributes() { }
 
@@ -1258,13 +1258,13 @@ public abstract class AbstractGemFireOperationsSessionRepository
 			return new GemFireSessionAttributes(lock);
 		}
 
-		private transient boolean delta = false;
+		private transient boolean delta;
 
 		private transient IsDirtyPredicate dirtyPredicate = DEFAULT_IS_DIRTY_PREDICATE;
 
-		private transient final Map<String, Object> sessionAttributes = new HashMap<>();
+		private final transient Map<String, Object> sessionAttributes = new HashMap<>();
 
-		private transient final Object lock;
+		private final transient Object lock;
 
 		/**
 		 * Constructs a new instance of {@link GemFireSessionAttributes}.
@@ -1375,7 +1375,7 @@ public abstract class AbstractGemFireOperationsSessionRepository
 
 			synchronized (getLock()) {
 
-				return new AbstractSet<Entry<String, Object>>() {
+				return new AbstractSet<>() {
 
 					@Override
 					public Iterator<Entry<String, Object>> iterator() {
