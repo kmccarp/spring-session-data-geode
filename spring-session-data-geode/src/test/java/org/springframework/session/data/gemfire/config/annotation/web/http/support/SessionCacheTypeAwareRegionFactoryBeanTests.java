@@ -75,7 +75,7 @@ public class SessionCacheTypeAwareRegionFactoryBeanTests {
 	private void testAfterPropertiesSetCreatesCorrectRegionForGemFireCacheType(GemFireCache expectedCache,
 			Region<Object, Session> expectedRegion) throws Exception {
 
-		this.regionFactoryBean = new SessionCacheTypeAwareRegionFactoryBean<Object, Session>() {
+		this.regionFactoryBean = new SessionCacheTypeAwareRegionFactoryBean<>() {
 
 			@Override
 			protected Region<Object, Session> newClientRegion(GemFireCache gemfireCache, String name) {

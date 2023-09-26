@@ -122,9 +122,7 @@ public class GemFireServer implements Runnable {
 			new ExpirationAttributes(Long.valueOf(TimeUnit.MINUTES.toSeconds(30)).intValue(),
 				ExpirationAction.INVALIDATE));
 
-		Region sessions = clusteredSpringSessionsRegion.create("ClusteredSpringSessions");
-
-		return sessions;
+		return clusteredSpringSessionsRegion.create("ClusteredSpringSessions");
 	}
 
 	@SuppressWarnings("rawtypes")
