@@ -2969,7 +2969,9 @@ public class AbstractGemFireOperationsSessionRepositoryTests {
 
 		long timestamp = System.currentTimeMillis();
 
-		while (System.currentTimeMillis() == timestamp);
+        while (System.currentTimeMillis() == timestamp) {
+            continue;
+        }
 
 		GemFireSession sessionTwo = new GemFireSession("1");
 
