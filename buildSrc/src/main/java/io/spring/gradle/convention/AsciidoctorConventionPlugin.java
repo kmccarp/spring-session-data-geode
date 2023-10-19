@@ -151,7 +151,7 @@ public class AsciidoctorConventionPlugin implements Plugin<Project> {
 		documentationResources.getDependencies()
 			.add(project.getDependencies().create(SPRING_ASCIIDOCTOR_BACKENDS_DEPENDENCY));
 
-		Sync unzipResources = project.getTasks().create("unzipDocumentationResources", Sync.class, sync -> {
+		return project.getTasks().create("unzipDocumentationResources", Sync.class, sync -> {
 
 			sync.dependsOn(documentationResources);
 
@@ -168,8 +168,6 @@ public class AsciidoctorConventionPlugin implements Plugin<Project> {
 			sync.into(project.relativePath(destination));
 
 		});
-
-		return unzipResources;
 	}
 
 	private void configureAsciidoctorTask(Project project, AbstractAsciidoctorTask asciidoctorTask) {
@@ -185,7 +183,7 @@ public class AsciidoctorConventionPlugin implements Plugin<Project> {
 		if (asciidoctorTask instanceof AsciidoctorTask) {
 			boolean pdf = asciidoctorTask.getName().toLowerCase().contains("pdf");
 			String backend = pdf ? "spring-pdf" : "spring-html";
-			((AsciidoctorTask) asciidoctorTask).outputOptions((outputOptions) -> outputOptions.backends(backend));
+			((AsciidoctorTask) asciidoctorTask).outputOptions(outputOptions -> outputOptions.backends(backend));
 			configureHtmlOnlyAttributes(asciidoctorTask);
 		}
 	}

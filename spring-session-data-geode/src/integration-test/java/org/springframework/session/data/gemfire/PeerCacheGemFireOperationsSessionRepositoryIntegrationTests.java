@@ -419,7 +419,7 @@ public class PeerCacheGemFireOperationsSessionRepositoryIntegrationTests extends
 
 			int compareValue = getLastName().compareTo(person.getLastName());
 
-			return (compareValue != 0 ? compareValue : getFirstName().compareTo(person.getFirstName()));
+			return compareValue != 0 ? compareValue : getFirstName().compareTo(person.getFirstName());
 		}
 
 		@Override
